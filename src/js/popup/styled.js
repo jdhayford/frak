@@ -26,7 +26,7 @@ export const Button = styled.div`
   text-align: center;
   align-items: center;
   justify-content: center;
-  border-radius: 0.25rem;
+  border-radius: 2px;
   cursor: pointer;
   padding: 0 1rem;
   ${(props) => props.secondary && css`
