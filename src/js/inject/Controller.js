@@ -11,6 +11,7 @@ class Controller {
     this.stopHandler = null;
     this.playHandler = null;
     this.pauseHandler = null;
+    this.chunkInterval = null;
   }
 
   start() {
@@ -24,6 +25,7 @@ class Controller {
     this.mediaRecorder.removeEventListener('stop', this.stopHandler);
     this.video.removeEventListener('play', this.playHandler);
     this.video.removeEventListener('pause', this.pauseHandler);
+    clearInterval(this.chunkInterval);
   }
 
   handleMediaRecorder() {
@@ -32,6 +34,7 @@ class Controller {
     };
     this.stopHandler = () => {
       if (window.confirm('Would you like to download this video?')) {
+        console.log(this.chunkList.length);
         downloadBlob(this.chunkList);
       };
       this.reset();
@@ -50,6 +53,7 @@ class Controller {
     this.playHandler = () => {
       this.mediaRecorder.start();
       recordingStyle(this.video);
+      this.chunkInterval = setInterval(() => this.mediaRecorder.requestData(), 1000)
       this.video.addEventListener('pause', this.pauseHandler);
     };
     this.video.addEventListener('play', this.playHandler);

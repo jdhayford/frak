@@ -1,3 +1,4 @@
+import '../img/icon-34.png';
 import Controller from './inject/Controller';
 import { selectVideoPrompt, closeToasts } from './inject/toaster';
 
