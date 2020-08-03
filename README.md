@@ -7,5 +7,5 @@ frak (BSG anyone?) is a POC extension I built to learn what the [MediaStream Rec
 
 ### Limitations
 - If the bitrate or dimensions of the video change in the middle of a recording (very possible for adaptive bitrate streaming), the resulting video will be corrupted. I think one possible way to resolve this would be to try to detect this event and keep the segments stored separately, then using something like FFMPEG (probably backend, webassembly build exist but are still pretty slow) to combine the two.
-- The video format is largely restricted to `.webm`
+- The video output format is largely restricted to `.webm`
 - Some larger sites like Youtube have more protection around the video element to prevent this
